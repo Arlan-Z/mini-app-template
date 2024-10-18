@@ -9,7 +9,7 @@ window.onload = function() {
     // Проверяем наличие initData
     if (initData) {
         // Отправляем initData на сервер для валидации
-        fetch('/auth/telegram', {
+        fetch('https://velvety-creponne-ff8e17.netlify.app', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ window.onload = function() {
         .then(data => {
             if (data.success) {
                 // Перенаправляем пользователя на домашнюю страницу
-                window.location.href = '/home';
+                alert('success');
             } else {
                 // Обрабатываем ошибку
                 alert('Ошибка авторизации: ' + data.message);
