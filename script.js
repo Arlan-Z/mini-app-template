@@ -1,5 +1,6 @@
 const data = document.getElementById("data");
-window.onload = function() {
+
+window.onload = async function() {
     if (typeof Telegram !== "undefined" && Telegram.WebApp) {
         // Инициализируем Telegram Web App
         Telegram.WebApp.ready();
@@ -10,27 +11,28 @@ window.onload = function() {
 
         // Проверяем наличие initData
         if (initData) {
-            // Отправляем initData на сервер для валидации
-            fetch('https://demo-pp.onrender.com/auth/telegram', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ initData })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+            try {
+                // Отправляем initData на сервер для валидации
+                const response = await fetch('https://demo-pp.onrender.com/auth/telegram', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ initData })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
                     alert('success');
                 } else {
                     // Обрабатываем ошибку
-                    alert('Ошибка авторизации: ' + data.message);
+                    alert('Ошибка авторизации: ' + result.message);
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Ошибка:', error);
                 alert('Произошла ошибка при авторизации.');
-            });
+            }
         } else {
             alert('initData отсутствует. Пожалуйста, попробуйте снова.');
         }
