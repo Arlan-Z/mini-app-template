@@ -37,7 +37,7 @@ window.onload = async function() {
                 }
             } catch (error) {
                 console.error('Ошибка:', error);
-                alert('Произошла ошибка при авторизации: ' + error.message);
+                alert('Произошла ошибка при авторизации: ' + error);
             }
         } else {
             alert('initData отсутствует. Пожалуйста, попробуйте снова.');
