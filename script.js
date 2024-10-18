@@ -5,11 +5,11 @@ window.onload = function() {
 
     // Получаем initData
     const initData = Telegram.WebApp.initData;
-    data.innerHTML = JSON.stringify({initData});
+    data.innerHTML = JSON.stringify(initData);
     // Проверяем наличие initData
     if (initData) {
         // Отправляем initData на сервер для валидации
-        fetch('https://velvety-creponne-ff8e17.netlify.app', {
+        fetch('https://demo-pp.onrender.com/auth/telegram', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
