@@ -5,7 +5,7 @@ window.onload = function() {
 
     // Получаем initData
     const initData = Telegram.WebApp.initData;
-
+    data.innerHTML = JSON.stringify({initData});
     // Проверяем наличие initData
     if (initData) {
         // Отправляем initData на сервер для валидации
@@ -19,7 +19,6 @@ window.onload = function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Перенаправляем пользователя на домашнюю страницу
                 alert('success');
             } else {
                 // Обрабатываем ошибку
