@@ -9,35 +9,33 @@ async function fetchTopUsersByTokens() {
         });
         console.log(response);
         const leaderboardList = document.getElementById('leaderboard__list');
-        // Check if the response is OK
+
         if (!response.ok) {
             leaderboardList.innerHTML = `Error: ${response.status}`;
         }
 
-        // Parse the JSON response
+
         const topUsers = await response.json();
 
         console.log(topUsers);
 
-        // Get the leaderboard element by ID (make sure it exists in the HTML)
 
 
-        // Clear any previous content
 
-        // Loop through topUsers and generate HTML for each user
+
         topUsers.forEach(user => {
-            // Create a new div element for each user
-            const userDiv = document.createElement('div');
-            userDiv.classList.add('user');  // Add a class to the div for styling
 
-            // Set the innerHTML for the user's info
+            const userDiv = document.createElement('div');
+            userDiv.classList.add('user');
+
+
             userDiv.innerHTML = `
                 <p>Username: ${user.username}</p>
                 <p>Level: ${user.level}</p>
                 <p>Tokens: ${user.tokens}</p>
             `;
 
-            // Append the new div to the leaderboard list container
+
             leaderboardList.appendChild(userDiv);
         });
 
@@ -49,4 +47,7 @@ async function fetchTopUsersByTokens() {
 // Fetch leaderboard on window load
 window.onload = async function() {
     await fetchTopUsersByTokens();
+    const leaderboardList = document.getElementById('leaderboard__list');
+    leaderboardList.innerHTML = 'Yerasyil';
+
 };
