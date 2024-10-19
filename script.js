@@ -1,5 +1,3 @@
-const data = document.getElementById("data");
-
 window.onload = async function() {
     if (typeof Telegram !== "undefined" && Telegram.WebApp) {
         // Инициализируем Telegram Web App
@@ -7,10 +5,7 @@ window.onload = async function() {
 
         // Получаем initData
         const initData = Telegram.WebApp.initData;
-        console.log(initData); // Логируем для проверки данных
-        data.innerHTML = JSON.stringify(initData);
-
-        // Проверяем наличие initData
+        alert(JSON.stringify(initData)); // Логируем для проверки данных
         if (initData) {
             try {
                 // Отправляем initData на сервер для валидации
