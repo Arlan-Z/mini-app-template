@@ -35,12 +35,12 @@ window.onload = async function() {
 
             if (response.ok) {
                 const result = await response.json();
-                console.log('Success:', result);
+                alert('Success:', result);
             } else {
-                console.error('Failed:', response.statusText);
+                alert('Failed:', response);
             }
         } catch (error) {
-            console.error('Error:', error);
+            alert('Error:', error);
         }
     }
 };
