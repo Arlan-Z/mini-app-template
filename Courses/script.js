@@ -32,6 +32,8 @@ async function fetchCourses() {
       courseDiv.innerHTML = `<div class="box">
                 <p class="name">${course.title}</p>
                 <p class="description">Description: ${course.description}</p>
+                <p class="level">Required level: ${course.requiredLevel}</p>
+                <p class="level">Exp reward: ${course.expReward}</p>
                 </div>
             `;
 
