@@ -49,7 +49,8 @@ window.onload = async function() {
     await fetchTopUsersByTokens();
     const leaderboardList = document.getElementById('leaderboard__list');
     const userDiv = document.createElement('div');
-    userDiv.classList.add('name');
+    userDiv.innerHTML="Yerasyil"
+    userDiv.classList.add('box');
     leaderboardList.innerHTML= userDiv;
 
 };
