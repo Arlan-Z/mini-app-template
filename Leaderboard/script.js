@@ -48,6 +48,8 @@ async function fetchTopUsersByTokens() {
 window.onload = async function() {
     await fetchTopUsersByTokens();
     const leaderboardList = document.getElementById('leaderboard__list');
-    leaderboardList.innerHTML = 'Yerasyil';
+    const userDiv = document.createElement('div');
+    userDiv.classList.add('name');
+    leaderboardList.innerHTML= userDiv;
 
 };
