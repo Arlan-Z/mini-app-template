@@ -27,12 +27,11 @@ async function fetchCourses() {
     courses.forEach(course => {
       // Create a new div element for each user
       const courseDiv = document.createElement('div');
-      courseDiv.classList.add('user');  // Add a class to the div for styling
 
       // Set the innerHTML for the user's info
       courseDiv.innerHTML = `<div class="box">
                 <p class="name">Username: ${course.title}</p>
-                <p class="level">Level: ${course.description}</p>
+                <p class="description">Level: ${course.description}</p>
                 </div>
             `;
 

@@ -28,7 +28,7 @@ async function fetchTopUsersByTokens() {
         topUsers.forEach(user => {
             // Create a new div element for each user
             const userDiv = document.createElement('div');
-            userDiv.classList.add('user');  // Add a class to the div for styling
+            // Add a class to the div for styling
 
             // Set the innerHTML for the user's info
             userDiv.innerHTML = `<div class="box">
