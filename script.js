@@ -1,5 +1,4 @@
 const usernameElem = document.getElementById("username");
-const url = "https://demo-pp-latest.onrender.com/auth/telegram";
 
 window.onload = async function() {
     if (typeof Telegram !== "undefined" && Telegram.WebApp) {
@@ -21,26 +20,22 @@ window.onload = async function() {
         const username = userObj.username;
         usernameElem.innerHTML = username;
 
-        // Отправляем POST запрос с initData
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    initData: initData // Передаем initData в теле запроса
-                })
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                alert('Success:', result);
-            } else {
-                alert('Failed:', response);
-            }
-        } catch (error) {
-            alert('Error:', error);
-        }
+        // Отправляем данные на сервер
+        sendData(initData);
     }
 };
+
+function sendData(initData) {
+    const data = { initData }; // Используем фактическое initData, переданное из Telegram
+
+    fetch('https://demo-pp.onrender.com/auth/telegram', {
+        method: 'POST',
+        mode: 'no-cors', // Используем no-cors для тестирования
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => console.log('Request succeeded:', response))
+    .catch(error => console.error('Error:', error));
+}
