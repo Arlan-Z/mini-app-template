@@ -1,35 +1,15 @@
-
-import {user,course} from "../models/models"
-
-export function fetchCourses(){
-    fetch(`https://demo-pp-latest.onrender.com (https://demo-pp-latest.onrender.com/auth/telegram)/api/courses`)
-        .then(response => {
-            if(!response.ok) {
-                throw new Error('Courses not found');
-            }
-            return response.json();
-        })
-        .then(courses=>{
-            const courseList = document.getElementById('course_list');
-            courseList.innerHTML = '';
-            courseList.forEach(course => {
-                const courseItem=document.createElement('div');
-                courseItem.classList.add('course-item');
-
-                courseItem.innerHTML = `
-                    <h3>${course.title}</h3>
-                    <p><strong>Description:</strong> ${course.description}</p>
-                    <p><strong>Required Level:</strong> ${course.requiredLevel}</p>
-                    <p><strong>Experience Reward:</strong> ${course.expReward}</p>
-                    <p><strong>Reward Tokens:</strong> ${course.rewardTokens}</p>`;
-                courseItem.addEventListener('click', () => {})
-                courseList.appendChild(courseItem);
-            })
-        })
-        .catch(error => {
-            console.error('Error fetching courses:', error);
-        });
-}
-
-;
-
+async function getCourses() {
+    try {
+      const response = await fetch('https://demo-pp.onrender.com/api/courses');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log(data); // Handle the response data here
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error);
+    }
+  }
+  
+getCourses(); // Call the function to fetch the data
+  
