@@ -4,7 +4,7 @@ try {
     // Функция для отправки данных на сервер
     function sendData(initData) {
         const data = { initData };
-        alert(JSON.stringify(data));
+        (JSON.stringify(data));
         fetch('https://demo-pp.onrender.com/auth/telegram', {
             method: 'POST',
             headers: {
@@ -29,10 +29,10 @@ try {
         });
     }
 
-    let isLoggedIn = false;
+    const isLoggedIn = false;
 
     window.onload = async function() {
-        if ((typeof Telegram !== "undefined" && Telegram.WebApp) && !isLoggedIn) {
+        if (typeof Telegram !== "undefined" && Telegram.WebApp) {
 
             // Инициализируем Telegram Web App
             Telegram.WebApp.ready();
@@ -59,8 +59,6 @@ try {
 
                 // Отправляем данные на сервер
                 sendData(initData);
-
-                isLoggedIn = true;
 
             }
         }
