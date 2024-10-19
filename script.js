@@ -29,8 +29,11 @@ try {
         });
     }
 
+    const isLoggedIn = false;
+
     window.onload = async function() {
-        if (typeof Telegram !== "undefined" && Telegram.WebApp) {
+        if ((typeof Telegram !== "undefined" && Telegram.WebApp) && !isLoggedIn) {
+
             // Инициализируем Telegram Web App
             Telegram.WebApp.ready();
 
@@ -56,6 +59,7 @@ try {
 
                 // Отправляем данные на сервер
                 sendData(initData);
+
             }
         }
     };
