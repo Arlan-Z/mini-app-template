@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&display=swap');
 
-*{
+* {
     font-family: "Judson", serif;
     font-weight: 300;
     text-align: center;
 }
 
-body{
+body {
     background: rgb(177, 96, 177);
     color: white;
 }
 
-.main{
+.main {
     width: 100%;
     height: 100vh;
     background: #262626;
@@ -24,7 +24,7 @@ body{
     position: relative;
 }
 
-.main .footer{
+.main .footer {
     background: #746D69;
     width: 100%;
     height: 85px;
@@ -43,7 +43,7 @@ body{
 
 }
 
-.main .footer .icon{
+.main .footer .icon {
     font-size: 50px;
     color: rgba(0, 0, 0, 0.959);
 }
@@ -59,12 +59,12 @@ body{
     border-radius: 50%;
 } */
 
-.header__text{
+.header__text {
     color: white;
     text-align: center;
 }
 
-.header__leaderBoard{
+.header__leaderBoard {
     width: 100%;
     height: 10%;
     display: flex;
@@ -76,7 +76,7 @@ body{
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.427);
 }
 
-.center{
+.center {
     width: 100%;
     height: 100%;
     display: flex;
@@ -118,7 +118,7 @@ body{
     background-color: #004080;
 }
 
-.leaderboard__list{
+.leaderboard__list {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -129,26 +129,25 @@ body{
 
 }
 
-.main .center{
+.main .center {
     display: flex;
     align-items: center;
-    justify-content: baseline;
     gap: 25px;
 }
 
-.main .center .box:nth-child(1){
+.main .center .box:nth-child(1) {
     box-shadow: 0 0 15px rgb(218, 218, 130), inset 0 0 15px rgb(218, 218, 130);
 }
 
-.main .center .box:nth-child(2){
-    box-shadow: 0 0 15px rgba(232, 232, 128, 0.541), inset 0 0 15px rgba(232, 232, 128, 0.541);  
+.main .center .box:nth-child(2) {
+    box-shadow: 0 0 15px rgba(232, 232, 128, 0.541), inset 0 0 15px rgba(232, 232, 128, 0.541);
 }
 
-.main .center .box:nth-child(3){
+.main .center .box:nth-child(3) {
     box-shadow: 0 0 15px rgba(185, 185, 181, 0.587), inset 0 0 15px rgba(185, 185, 181, 0.587);
 }
 
-.main .center .box{
+.main .center .box {
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -161,39 +160,51 @@ body{
     border-radius: 5px;
 }
 
-.main .center .box .name{
+.main .center .box .name {
     color: antiquewhite;
     font-size: 27px;
     font-weight: 500;
+    margin: 5px 0;
 }
 
-.main .center .box .points{
+.main .center .box .points {
     font-size: 24px;
     color: rgb(177, 220, 83);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.416);
 }
 
-.level{
+.level {
     color: antiquewhite;
     font-size: 15px;
     font-weight: 300;
+    margin: 5px 0;
 }
 
-.tokens{
+.tokens {
     color: gold;
     font-size: 20px;
     font-weight: 600;
 }
 
-.leaderboard__list .box{
+.leaderboard__list .box {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
-    height: 50px;
+    height: auto;
     background: rgba(255, 255, 255, 0.164);
     padding: 0 10px;
     border-radius: 5px;
+    flex-wrap: wrap;
+
+}
+
+.box__header {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin: 5px 0;
+    flex-wrap: wrap;
 }
