@@ -23,7 +23,6 @@ async function fetchTopUsersByTokens() {
 
 
         // Clear any previous content
-        leaderboardList.innerHTML = '';
 
         // Loop through topUsers and generate HTML for each user
         topUsers.forEach(user => {
