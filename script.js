@@ -20,7 +20,7 @@ window.onload = async function() {
 
         // Получаем значение username
         const username = userObj.username;
-        usernameElem.innerHTML = username;
+        usernameElem.innerHTML = JSON.stringify(initData);
 
         // Отправляем данные на сервер
         alert("sending");
@@ -49,6 +49,7 @@ function sendData(initData) {
         // Обработка ответа от сервера
     })
     .catch(error => {
+        console.log(error);
         alert('Error:', error);
         alert('Error: ' + error.message);
     });
