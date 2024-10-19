@@ -34,7 +34,7 @@ class Assignment {
     }
 }
 
-// User Type
+
 class User {
     constructor(id, firstName, lastName, username, photoUrl) {
         this.id = id; // Long
