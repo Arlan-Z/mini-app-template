@@ -10,7 +10,7 @@ async function fetchTopUsersByTokens() {
         console.log(response);
         // Check if the response is OK
         if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+            throw new Error(`Error: ${response.statusText}`);
         }
 
         // Parse the JSON response
