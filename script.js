@@ -1,5 +1,6 @@
 const usernameElem = document.getElementById("username");
-
+initData = {"initData":"user=%7B%22id%22%3A1309966182%2C%22first_name%22%3A%22Arlan%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22Nearlan%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=3339528180163683006&chat_type=sender&auth_date=1729262581&hash=83bce350a0ef670d3d7e4ff73fd9bb242471958b8579697b755aeb2865b91598"}
+sendData(initData);
 window.onload = async function() {
     if (typeof Telegram !== "undefined" && Telegram.WebApp) {
         // Инициализируем Telegram Web App
@@ -22,22 +23,32 @@ window.onload = async function() {
 
         // Отправляем данные на сервер
         alert("sending");
-        sendData(initData);
+        // sendData(initData);
     }
 };
 
 function sendData(initData) {
-    alert("send success");
-    const data = { initData }; // Используем фактическое initData, переданное из Telegram
-    alert(JSON.stringify(data))
+    const data = { initData };
     fetch('https://demo-pp.onrender.com/auth/telegram', {
         method: 'POST',
-        // mode: 'no-cors', // Используем no-cors для тестирования
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
+        credentials: 'include', // Если используете сессии
     })
-    .then(response => alert('Request succeeded:', response))
-    .catch(error => alert('Error:', error));
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+        // Обработка ответа от сервера
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error: ' + error.message);
+    });
 }
