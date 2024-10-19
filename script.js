@@ -1,3 +1,5 @@
+const usernameElem = document.getElementById("username");
+
 window.onload = async function() {
     if (typeof Telegram !== "undefined" && Telegram.WebApp) {
         // Инициализируем Telegram Web App
@@ -6,38 +8,18 @@ window.onload = async function() {
         // Получаем initData
         const initData = Telegram.WebApp.initData;
         alert(JSON.stringify(initData)); // Логируем для проверки данных
-        if (initData) {
-            try {
-                // Отправляем initData на сервер для валидации
-                const response = await fetch('https://demo-pp.onrender.com/auth/telegram', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ initData })
-                });
+        const params = new URLSearchParams(initData);
+        const userEncoded = params.get('user');
 
-                // Проверка на ошибки HTTP
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
+        // 2. Декодируем URL-кодирование
+        const userDecoded = decodeURIComponent(userEncoded);
 
-                const result = await response.json();
+        // 3. Преобразуем декодированную строку в объект JSON
+        const userObj = JSON.parse(userDecoded);
 
-                if (result.success) {
-                    alert('success');
-                } else {
-                    // Обрабатываем ошибку
-                    alert('Ошибка авторизации: ' + result.message);
-                }
-            } catch (error) {
-                console.error('Ошибка:', error);
-                alert('Произошла ошибка при авторизации: ' + error);
-            }
-        } else {
-            alert('initData отсутствует. Пожалуйста, попробуйте снова.');
-        }
-    } else {
-        alert('Скрипт должен выполняться в Telegram Web App.');
+        // 4. Получаем значение username
+        const username = userObj.username;
+
+        usernameElem.innerHTML = username;
     }
 };
