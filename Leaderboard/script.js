@@ -7,9 +7,11 @@ async function fetchTopUsersByTokens() {
             },
             credentials: 'include'
         });
+        console.log(response);
+        const leaderboardList = document.getElementById('leaderboard__list');
 
         if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+            leaderboardList.innerHTML = `Error: ${response.status}`;
         }
 
 
@@ -18,30 +20,37 @@ async function fetchTopUsersByTokens() {
         console.log(topUsers);
 
 
-        return topUsers;
+
+
+
+        topUsers.forEach(user => {
+
+            const userDiv = document.createElement('div');
+            userDiv.classList.add('user');
+
+
+            userDiv.innerHTML = `
+                <p>Username: ${user.username}</p>
+                <p>Level: ${user.level}</p>
+                <p>Tokens: ${user.tokens}</p>
+            `;
+
+
+            leaderboardList.appendChild(userDiv);
+        });
 
     } catch (error) {
-        console.error('Failed to fetch leaderboard:', error);
+        leaderboardList.innerHTML='Failed to fetch leaderboard:', error;
     }
 }
 
-// Call the function to get the top users
+// Fetch leaderboard on window load
 window.onload = async function() {
-    try {
-        const response = await fetch('https://demo-pp.onrender.com/api/leaderboard/tokens');
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
-        }
+    await fetchTopUsersByTokens();
+    const leaderboardList = document.getElementById('leaderboard__list');
+    const userDiv = document.createElement('div');
+    userDiv.innerHTML="Yerasyil"
+    userDiv.classList.add('box');
+    leaderboardList.innerHTML= userDiv;
 
-
-        const topUsers = await response.json();
-
-        console.log(topUsers);
-
-        const leaderboard__list=document.getElementById('.leaderboard__list');
-        leaderboard__list.innerHTML = topUsers;
-
-    } catch (error) {
-        console.error('Failed to fetch leaderboard:', error);
-    }
-}
+};
