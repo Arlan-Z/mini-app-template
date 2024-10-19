@@ -1,5 +1,5 @@
 const usernameElem = document.getElementById("username");
-
+const url = "https://demo-pp-latest.onrender.com/auth/telegram";
 window.onload = async function() {
     if (typeof Telegram !== "undefined" && Telegram.WebApp) {
         // Инициализируем Telegram Web App
@@ -7,7 +7,6 @@ window.onload = async function() {
 
         // Получаем initData
         const initData = Telegram.WebApp.initData;
-        alert(JSON.stringify(initData)); // Логируем для проверки данных
         const params = new URLSearchParams(initData);
         const userEncoded = params.get('user');
 
