@@ -1,22 +1,51 @@
-async function getCourses() {
+async function fetchCourses() {
   try {
     const response = await fetch('https://demo-pp.onrender.com/api/courses', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        'Cookie': 'JSESSIONID=EFAF68AC97A50C6D88C520B581396B61', // Include the session ID here
+        'Content-Type': 'application/json'
       },
+      credentials: 'include'
     });
-
+    console.log(response);
+    // Check if the response is OK
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error(`Error: ${response.statusText}`);
     }
 
-    const data = await response.json();
-    alert(data); // Handle the response data here
+    // Parse the JSON response
+    const courses = await response.json();
+
+
+    // Get the leaderboard element by ID (make sure it exists in the HTML)
+    const course_List = document.getElementById('course_list');
+
+    // Clear any previous content
+    course_List.innerHTML = '';
+
+    // Loop through topUsers and generate HTML for each user
+    courses.forEach(course => {
+      // Create a new div element for each user
+      const courseDiv = document.createElement('div');
+      courseDiv.classList.add('user');  // Add a class to the div for styling
+
+      // Set the innerHTML for the user's info
+      courseDiv.innerHTML = `<div class="box">
+                <p class="name">Username: ${course.title}</p>
+                <p class="level">Level: ${course.description}</p>
+                </div>
+            `;
+
+      // Append the new div to the leaderboard list container
+      course_List.appendChild(courseDiv);
+    });
+
   } catch (error) {
-    alert('There was a problem with the fetch operation:', error);
+    console.log('Failed to fetch leaderboard:', error);
   }
 }
 
-getCourses(); // Call the function to fetch the data
+// Fetch leaderboard on window load
+window.onload = async function() {
+  await fetchCourses();
+};
