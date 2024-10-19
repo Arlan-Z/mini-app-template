@@ -98,8 +98,9 @@ button#enroll{
     height: 40px;
     font-size: 30px;
     border: none;
-    background-color: #374b6d;
-    color: white;
-    box-shadow: 0 0 10px rgba(212, 179, 117, 0.612);
+    background-color: #9ba3b1;
+    color: rgb(244, 244, 243);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.192);
+    box-shadow: 0 0 10px rgba(212, 179, 117, 0.763);
     border-radius: 10px;
 }
