@@ -11,7 +11,7 @@ async function fetchTopUsersByTokens() {
         const leaderboardList = document.getElementById('leaderboard__list');
         // Check if the response is OK
         if (!response.ok) {
-            const leaderboardList= `Error: ${response.status}`;
+            leaderboardList.innerHTML = `Error: ${response.status}`;
         }
 
         // Parse the JSON response
@@ -20,7 +20,7 @@ async function fetchTopUsersByTokens() {
         console.log(topUsers);
 
         // Get the leaderboard element by ID (make sure it exists in the HTML)
-        const leaderboardList = document.getElementById('leaderboard__list');
+
 
         // Clear any previous content
         leaderboardList.innerHTML = '';
