@@ -31,12 +31,13 @@ async function fetchTopUsersByTokens() {
             // Add a class to the div for styling
 
             // Set the innerHTML for the user's info
-            userDiv.innerHTML = `<div class="box">
+            userDiv.innerHTML = `
                 <p class="name">Username: ${user.username}</p>
                 <p class="level">Level: ${user.level}</p>
                 <p class="tokens">Tokens: ${user.tokens}</p>
-                </div>
             `;
+
+            userDiv.add("box");
 
             // Append the new div to the leaderboard list container
             leaderboardList.appendChild(userDiv);
