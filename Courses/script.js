@@ -1,7 +1,7 @@
 
 import {user,course} from "../models/models"
 
-function fetchCourses(){
+export function fetchCourses(){
     fetch(`https://demo-pp-latest.onrender.com (https://demo-pp-latest.onrender.com/auth/telegram)/api/courses`)
         .then(response => {
             if(!response.ok) {
@@ -22,7 +22,7 @@ function fetchCourses(){
                     <p><strong>Required Level:</strong> ${course.requiredLevel}</p>
                     <p><strong>Experience Reward:</strong> ${course.expReward}</p>
                     <p><strong>Reward Tokens:</strong> ${course.rewardTokens}</p>`;
-
+                courseItem.addEventListener('click', () => {})
                 courseList.appendChild(courseItem);
             })
         })
@@ -30,4 +30,6 @@ function fetchCourses(){
             console.error('Error fetching courses:', error);
         });
 }
+
+;
 
