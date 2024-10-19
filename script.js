@@ -49,7 +49,7 @@ function sendData(initData) {
         // Обработка ответа от сервера
     })
     .catch(error => {
-        alert.error('Error:', error);
+        alert('Error:', error);
         alert('Error: ' + error.message);
     });
 }
