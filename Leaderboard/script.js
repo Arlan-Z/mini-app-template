@@ -5,18 +5,19 @@ async function fetchTopUsersByTokens() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include'  // Necessary for cross-origin requests with cookies
+            credentials: 'include'
         });
-
+        console.log(response);
+        const leaderboardList = document.getElementById('leaderboard__list');
         // Check if the response is OK
         if (!response.ok) {
-            throw new Error(`Error: ${response.status}`);
+            const leaderboardList= `Error: ${response.status}`;
         }
 
         // Parse the JSON response
         const topUsers = await response.json();
 
-        console.log(topUsers); // Log the fetched data to check if it's correct
+        console.log(topUsers);
 
         // Get the leaderboard element by ID (make sure it exists in the HTML)
         const leaderboardList = document.getElementById('leaderboard__list');
