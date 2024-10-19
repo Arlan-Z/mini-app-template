@@ -30,8 +30,10 @@ async function fetchCourses() {
 
       // Set the innerHTML for the user's info
       courseDiv.innerHTML = `<div class="box">
+                <div>
                 <p class="name">${course.title}</p>
                 <p class="description">Description: ${course.description}</p>
+                </div>
                 <p class="level">Required level: ${course.requiredLevel}</p>
                 <p class="level">Exp reward: ${course.expReward}</p>
                 </div>

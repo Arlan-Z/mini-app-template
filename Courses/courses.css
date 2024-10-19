@@ -94,7 +94,7 @@ body{
 .main .center{
     display: flex;
     align-items: center;
-    justify-content: baseline;
+    justify-content: flex-start;
     gap: 25px;
 }
 
@@ -104,19 +104,21 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-direction: column;
+    flex-direction: row;
     width: 90%;
-    height: 50px;
+    height: auto;
     background: rgba(255, 255, 255, 0.164);
     padding: 0 10px;
     border-radius: 5px;
     margin:0 auto;
+    flex-wrap: wrap;
 }
 
 .main .center .box .name{
     color: antiquewhite;
     font-size: 27px;
     font-weight: 500;
+    margin: 5px 0;
 }
 
 .main .center .box .points{
@@ -129,4 +131,14 @@ body{
     color: antiquewhite;
     font-size: 16px;
     font-weight: 300;
+    margin: 5px 0;
+}
+
+.box__header{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 90%;
+    flex-wrap: wrap;
+    margin:  0 auto;
 }
