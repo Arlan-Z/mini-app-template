@@ -5,37 +5,48 @@ async function fetchTopUsersByTokens() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include'
+            credentials: 'include'  // Necessary for cross-origin requests with cookies
         });
 
+        // Check if the response is OK
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`);
         }
 
+        // Parse the JSON response
         const topUsers = await response.json();
 
-        console.log(topUsers);
+        console.log(topUsers); // Log the fetched data to check if it's correct
 
-        const leaderboard__list = document.getElementById('leaderboard__list');
+        // Get the leaderboard element by ID (make sure it exists in the HTML)
+        const leaderboardList = document.getElementById('leaderboard__list');
 
-        // Create HTML content by mapping the array to list items
-        const topUserlistHTML = topUsers.map(user =>
-            `<div class="user">
+        // Clear any previous content
+        leaderboardList.innerHTML = '';
+
+        // Loop through topUsers and generate HTML for each user
+        topUsers.forEach(user => {
+            // Create a new div element for each user
+            const userDiv = document.createElement('div');
+            userDiv.classList.add('user');  // Add a class to the div for styling
+
+            // Set the innerHTML for the user's info
+            userDiv.innerHTML = `
                 <p>Username: ${user.username}</p>
                 <p>Level: ${user.level}</p>
                 <p>Tokens: ${user.tokens}</p>
-            </div>`
-        ).join(''); // Join them into a single string of HTML
+            `;
 
-        // Set the innerHTML to display the users
-        leaderboard__list.innerHTML = topUserlistHTML;
+            // Append the new div to the leaderboard list container
+            leaderboardList.appendChild(userDiv);
+        });
 
     } catch (error) {
         console.error('Failed to fetch leaderboard:', error);
     }
 }
 
-// Call the function when the window loads
+// Fetch leaderboard on window load
 window.onload = async function() {
     await fetchTopUsersByTokens();
 };
