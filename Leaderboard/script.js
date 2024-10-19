@@ -42,7 +42,7 @@ async function fetchTopUsersByTokens() {
         });
 
     } catch (error) {
-        alert('Failed to fetch leaderboard:', error);
+       console.log('Failed to fetch leaderboard:', error);
     }
 }
 
