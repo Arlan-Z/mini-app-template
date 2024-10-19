@@ -168,3 +168,15 @@ body{
     color: rgb(177, 220, 83);
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.416);
 }
+
+.level{
+    color: antiquewhite;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.tokens{
+    color: gold;
+    font-size: 20px;
+    font-weight: 600;
+}
