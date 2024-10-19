@@ -32,7 +32,7 @@ function sendData(initData) {
     alert(JSON.stringify(data))
     fetch('https://demo-pp.onrender.com/auth/telegram', {
         method: 'POST',
-        mode: 'no-cors', // Используем no-cors для тестирования
+        // mode: 'no-cors', // Используем no-cors для тестирования
         headers: {
             'Content-Type': 'application/json',
         },
