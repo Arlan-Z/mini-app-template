@@ -169,14 +169,14 @@ body {
     color: antiquewhite;
     font-size: 15px;
     font-weight: 300;
-    margin: 5px 0;
+    margin:  0;
 }
 
 .tokens {
     color: gold;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
-    margin: 5px 0;
+    margin: 0;
 }
 
 
