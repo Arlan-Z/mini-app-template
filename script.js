@@ -36,6 +36,6 @@ function sendData(initData) {
         },
         body: JSON.stringify(data),
     })
-    .then(response => console.log('Request succeeded:', response))
-    .catch(error => console.error('Error:', error));
+    .then(response => alert('Request succeeded:', response))
+    .catch(error => alert('Error:', error));
 }
