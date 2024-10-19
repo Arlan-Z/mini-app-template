@@ -1,5 +1,6 @@
 const usernameElem = document.getElementById("username");
 const url = "https://demo-pp-latest.onrender.com/auth/telegram";
+
 window.onload = async function() {
     if (typeof Telegram !== "undefined" && Telegram.WebApp) {
         // Инициализируем Telegram Web App
@@ -10,15 +11,36 @@ window.onload = async function() {
         const params = new URLSearchParams(initData);
         const userEncoded = params.get('user');
 
-        // 2. Декодируем URL-кодирование
+        // Декодируем URL-кодирование
         const userDecoded = decodeURIComponent(userEncoded);
 
-        // 3. Преобразуем декодированную строку в объект JSON
+        // Преобразуем декодированную строку в объект JSON
         const userObj = JSON.parse(userDecoded);
 
-        // 4. Получаем значение username
+        // Получаем значение username
         const username = userObj.username;
-
         usernameElem.innerHTML = username;
+
+        // Отправляем POST запрос с initData
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    initData: initData // Передаем initData в теле запроса
+                })
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log('Success:', result);
+            } else {
+                console.error('Failed:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
 };
