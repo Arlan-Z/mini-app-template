@@ -8,49 +8,45 @@ async function fetchTopUsersByTokens() {
             credentials: 'include'
         });
         console.log(response);
-        const leaderboardList = document.getElementById('leaderboard__list');
-
+        // Check if the response is OK
         if (!response.ok) {
-            leaderboardList.innerHTML = `Error: ${response.status}`;
+            alert(`Error: ${response.status}`);
         }
 
-
+        // Parse the JSON response
         const topUsers = await response.json();
 
-        console.log(topUsers);
+       console.log(topUsers);
 
+        // Get the leaderboard element by ID (make sure it exists in the HTML)
+        const leaderboardList = document.getElementById('leaderboard__list');
 
+        // Clear any previous content
+        leaderboardList.innerHTML = '';
 
-
-
+        // Loop through topUsers and generate HTML for each user
         topUsers.forEach(user => {
-
+            // Create a new div element for each user
             const userDiv = document.createElement('div');
-            userDiv.classList.add('user');
+            userDiv.classList.add('user');  // Add a class to the div for styling
 
-
+            // Set the innerHTML for the user's info
             userDiv.innerHTML = `
                 <p>Username: ${user.username}</p>
                 <p>Level: ${user.level}</p>
                 <p>Tokens: ${user.tokens}</p>
             `;
 
-
+            // Append the new div to the leaderboard list container
             leaderboardList.appendChild(userDiv);
         });
 
     } catch (error) {
-        leaderboardList.innerHTML='Failed to fetch leaderboard:', error;
+        alert('Failed to fetch leaderboard:', error);
     }
 }
 
 // Fetch leaderboard on window load
 window.onload = async function() {
     await fetchTopUsersByTokens();
-    const leaderboardList = document.getElementById('leaderboard__list');
-    const userDiv = document.createElement('div');
-    userDiv.innerHTML="Yerasyil"
-    userDiv.classList.add('box');
-    leaderboardList.innerHTML= userDiv;
-
 };
