@@ -21,13 +21,15 @@ window.onload = async function() {
         usernameElem.innerHTML = username;
 
         // Отправляем данные на сервер
+        alert("sending");
         sendData(initData);
     }
 };
 
 function sendData(initData) {
+    alert("send success");
     const data = { initData }; // Используем фактическое initData, переданное из Telegram
-
+    alert(JSON.stringify(data))
     fetch('https://demo-pp.onrender.com/auth/telegram', {
         method: 'POST',
         mode: 'no-cors', // Используем no-cors для тестирования
